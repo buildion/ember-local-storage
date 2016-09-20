@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import getOwner from 'ember-getowner-polyfill';
+import localForage from 'ember-local-forage';
 
 const {
   assert,
@@ -17,7 +18,7 @@ function tryStorage(name) {
 
   // safari private mode exposes xStorage but fails on setItem
   try {
-    nativeStorage = (name === 'local') ? localStorage : sessionStorage;
+    nativeStorage = (name === 'local') ? localForage : sessionStorage;
     nativeStorage.setItem('emberlocalstorage.test', 'ok');
     nativeStorage.removeItem('emberlocalstorage.test');
   } catch (e) {
