@@ -23,9 +23,12 @@ test('it persists the index', function(assert) {
   assert.expect(2);
   var adapter = this.subject();
 
+  console.log(window.localStorage['index-projects']);
+
   storageEqual(assert, window.localStorage['index-projects'], undefined);
 
   adapter._addToIndex('projects', '1234');
+
   storageDeepEqual(assert, window.localStorage['index-projects'], ['1234']);
 });
 
